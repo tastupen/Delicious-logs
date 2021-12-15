@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_15_073257) do
+ActiveRecord::Schema.define(version: 2021_12_15_075032) do
 
   create_table "categories", force: :cascade do |t|
     t.string "type_of_taste"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tastes", force: :cascade do |t|
+    t.string "taste_intensity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

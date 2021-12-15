@@ -11,5 +11,13 @@ type_of_tastes = ["甘い", "普通", "辛い"]
 type_of_tastes.each do |type_of_taste|
   Category.create(
     type_of_taste: type_of_taste
-    )
+  )
+end
+
+taste_intensitys = ["薄い", "普通", "濃い"]
+
+taste_intensitys.each do |taste_intensity|
+  Taste.create(
+    taste_intensity: taste_intensity
+  )
 end
