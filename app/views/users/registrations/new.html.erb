@@ -1,0 +1,37 @@
+<div class="full-page">
+  <h2 style="max-width: 1100px;margin: 0 auto;padding: 20px;text-align: center;font-weight: bold;">サインイン</h2>
+  <div class="user-login">
+    <div class="form-all">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "users/shared/error_messages", resource: resource %>
+        
+        <span><%= image_tag "/images/うまログ.png", class: "logo" %></span>
+        <br>
+        
+        <div>
+          <%= f.label :name, "ニックネーム" %>: <%= f.text_field :name, autofocus: true, autocomplete: "name", style: "border: solid 1px;" %>
+        </div>
+        <br>
+        <div class="field">
+          <%= f.label :email, "メールアドレス" %>: <%= f.email_field :email, autofocus: true, autocomplete: "email", style: "border: solid 1px;" %>
+        </div>
+        <br>
+        <div class="field">
+          <%= f.label :password, "パスワード" %>
+          <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %>: <%= f.password_field :password, autocomplete: "new-password", style: "border: solid 1px;" %>
+        </div>
+        <br>
+        <div class="field">
+          <%= f.label :password_confirmation, "パスワード(確認用)" %>: <%= f.password_field :password_confirmation, autocomplete: "new-password", style: "border: solid 1px;" %>
+        </div>
+        <br>
+        <div class="actions">
+          <button type='submit' class="form-btn">登録する</button>
+        </div>
+      <% end %>
+      <%= render "users/shared/links" %>
+    </div>
+  </div>
+</div>

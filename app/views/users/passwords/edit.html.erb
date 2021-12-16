@@ -1,0 +1,30 @@
+<div class="full-page">
+  <h2 style="max-width: 1100px;margin: 0 auto;padding: 20px;text-align: center;font-weight: bold;">Change your password</h2>
+  <div class="user-login">
+    <div class="form-all">
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+        <%= render "users/shared/error_messages", resource: resource %>
+          <%= f.hidden_field :reset_password_token %>
+          
+          <span><%= image_tag "/images/うまログ.png", class: "logo" %></span>
+          
+          <div class="field">
+            <%= f.label :password, "New password" %><br />
+            <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)
+            <% end %>: <%= f.password_field :password, autofocus: true, autocomplete: "new-password", style: "border: solid 1px;" %>
+          </div>
+          <br>
+          <div class="field">
+            <%= f.label :password_confirmation, "新しいパスワードの確認" %>: <%= f.password_field :password_confirmation, autocomplete: "new-password", style: "border: solid 1px;" %>
+          </div>
+          <br>
+          <div class="actions">
+            <button type='submit' class="form-btn1">パスワードを変更する</button>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= render "users/shared/links" %>

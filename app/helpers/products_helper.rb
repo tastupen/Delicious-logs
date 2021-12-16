@@ -1,9 +1,9 @@
 module ProductsHelper
   def score_on_star(recommend)
-    return "★★★★★" if score == 5
-    return "★★★★" if score == 4
-    return "★★★" if score == 3
-    return "★★" if score == 2
-    return "★" if score == 1
+    return "★★★★★" if recommend == 5
+    return "★★★★" if recommend == 4
+    return "★★★" if recommend == 3
+    return "★★" if recommend == 2
+    return "★" if  recommend == 1
   end
 end

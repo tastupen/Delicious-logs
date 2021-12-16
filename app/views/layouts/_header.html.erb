@@ -1,0 +1,26 @@
+<header class="page-header wrapper">
+  <h1><a href="/"><%= image_tag "/images/うまログ.png", class: "logo" %></a></h1>
+  <nav>
+    <ul class="main-nav">
+      <% if user_signed_in? %>
+      <li>
+        <%= link_to mypage_users_path do %>
+          <i class="fas fa-user mr-1"></i><label>マイページ</label>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to new_product_path do %>
+          <i class="fas fa-edit"></i><label>商品登録</label>
+        <% end %>
+      </li>
+      <% else %>
+        <li>
+          <%= link_to "サインイン", new_user_registration_path, class: "nav-link" %>
+        </li>
+        <li>
+          <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
+        </li>
+      <% end %>
+    </ul>
+  </nav>
+</header>

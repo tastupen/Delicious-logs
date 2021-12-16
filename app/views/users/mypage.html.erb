@@ -1,0 +1,59 @@
+<div class="full-page">
+  <h1 style="max-width: 1100px;margin: 0 auto;padding: 20px;">MYページ</h1>
+  <div class="mypage wrapper">
+    <div class="mypage-flex">
+      <div class="label-flex">
+        <div>
+          <i class="fas fa-user fa-3x"></i>
+        </div>
+        <div class="label">
+          <label>会員情報の編集</label>
+          <p>アカウント情報の編集</p>
+        </div>
+      </div>
+      <div>
+        <%= link_to mypage_edit_users_path do %>
+          <i class="fas fa-chevron-right fa-2x"></i>
+        <% end %>
+      </div>
+    </div>
+
+    <hr>
+    
+    <div class="mypage-flex">
+      <div class="label-flex">
+        <div>
+          <i class="fas fa-lock fa-3x"></i>
+        </div>
+        <div>
+          <label for="user-name">パスワード変更</label>
+          <p>パスワードを変更します</p>
+        </div>
+      </div>
+      <div>
+        <%= link_to mypage_edit_password_users_path do %>
+          <i class="fas fa-chevron-right fa-2x"></i>
+        <% end %>
+      </div>
+    </div>
+    
+    <hr>
+
+    <div class="mypage-flex">
+      <div class="label-flex">
+        <div>
+          <i class="fas fa-sign-out-alt fa-3x"></i>
+        </div>
+        <div class="label">
+          <label for="user-name">ログアウト</label>
+          <p>ログアウトします</p>
+        </div>
+      </div>
+      <div>
+        <%= link_to logout_path, method: :delete do %>
+          <i class="fas fa-chevron-right fa-2x"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

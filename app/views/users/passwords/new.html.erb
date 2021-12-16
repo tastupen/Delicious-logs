@@ -1,0 +1,21 @@
+<div class="full-page">
+  <h2 style="max-width: 1100px;margin: 0 auto;padding: 20px;text-align: center;font-weight: bold;">パスワードの再設定</h2>
+  <div class="user-login">
+    <div class="form-all">
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <%= render "users/shared/error_messages", resource: resource %>
+        
+        <span><%= image_tag "/images/うまログ.png", class: "logo" %></span>
+        
+        <div class="field">
+          <%= f.label :email %>: <%= f.email_field :email, autofocus: true, autocomplete: "email", style: "border: solid 1px;" %>
+        </div>
+        <br>
+        <div class="actions">
+          <button type='submit' class="form-btn1">パスワードリセットのメールを送る</button>
+        </div>
+      <% end %>
+      <%= render "users/shared/links" %>
+    </div>
+  </div>
+</div>

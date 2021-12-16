@@ -2,24 +2,24 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   
   def index
-    @products = Product.all
+    @products = current_user.products.all
   end
 
   def show
   end
 
   def new
-    @product = Product.new
+    @product = current_user.products.new
     @categories = Category.all
     @tastes = Taste.all
     @product_star_repeat_select = Product.star_repeat_select
   end
 
   def create
-    @product = Product.new(product_params)
+    @product = current_user.products.new(product_params)
     
     if @product.save
-      redirect_to root_path, notice: "投稿に成功しました"
+      redirect_to products_path, notice: "投稿に成功しました"
     else
       redirect_to new_product_path, alert: "投稿に失敗しました"
     end
@@ -46,7 +46,8 @@ class ProductsController < ApplicationController
   private
   
     def set_product
-      @product = Product.find(params[:id])
+      @product = current_user.products.find_by(id: params[:id])
+      redirect_to(products_url, alert: "ERROR!!") if @product.blank?
     end
     
     def product_params
