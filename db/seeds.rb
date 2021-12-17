@@ -21,3 +21,124 @@ taste_intensitys.each do |taste_intensity|
     taste_intensity: taste_intensity
   )
 end
+
+major_category_names = ["お菓子", "スイーツ", "冷凍食品", "調味料", "レトルト食品", "インスタント食品","缶詰食品", "びん詰め食品", "果実", "お肉", "その他" ]
+
+snack_categories = ["ポテトチップス", "スナック" "ポップコーン", "チョコレート", "ビスケット", "キャンディー", "アイスクリーム", "その他"]
+
+sweets_categories = ["ケーキ", "ドーナツ", "ゼリー", "クレープ","焼き菓子", "和菓子","その他"]
+
+frozenfood_categories = ["冷凍チャーハン", "冷凍ポテト", "冷凍餃子","冷凍パスタ", "冷凍ラーメン", "冷凍麺", "冷凍ピザ・グラタン", "冷凍コロッケ", "冷凍調理", "冷凍米飯加工品", "冷凍畜産素材", "冷凍水産素材", "冷凍農産素材" , "その他" ]
+
+spices_categories = ["砂糖","塩","胡椒","醤油","みりん","料理酒", "酢", "サラダ油", "ごま油", "マヨネーズ", "ソース", "ケチャップ", "コンソメ", "鶏がらスープの素" "カレー粉", "小麦粉", "片栗粉", "めんつゆ", "ポン酢", "その他"]
+
+retortfood_categories = ["カレー類（ビーフ、チキン、ポ－ク）","シチュー（クリーム、コーン、トマト）",
+                         "ハヤシ、スープ（コーン、ポタージュ、チキン、野菜）","パスタソース（ミートソース、クリームソース、ペペロンチーノ）",
+                         "料理用ソース（ドミグラスソース、ホワイトソース、中華あわせ調味料）", "かまめしの素","八宝菜", "マーボー豆腐","丼類の素", "おでん",
+                         "ハンバーグ","ミートボール","ヤキトリ", "鶏肉油漬","コンビーフ","ソーセージ","酢豚","ツナの油漬け","ウナギのかば焼き","さんまのかば焼き", "サバみそ煮",
+                         "赤飯","五目めし","牛めし" "チキンライス", "とり釜めし","白飯", "おかゆ" "雑炊", "チャーハン","ぜんざい","ベビーフード", "介護食", "その他"]
+
+instantfood_categories = ["ラーメン", "カレー類（ビーフ、チキン、ポ－ク）", "ライス・おかゆ・リゾット", "スープ・味噌汁",
+                        "パスタソース", "調理用スープ", "カップラーメン","カップ焼きそば", "その他"]
+                        
+canning_categories = ["かに","さけ", "ツナ", "さば", "いわし", "さんま", "ほたて", "赤貝", "あさり", "フルーツ", "野菜缶詰", "畜肉缶詰", "調理缶詰", "その他"]
+
+bottled_categories = ["のりつくだに", "鮭フレーク", "いちご", "マーマレード", "りんご", "ブルーベリー",
+                      "ピクルス・オリーブ", "めんつゆ類","ベビーフード", "水産びん詰","野菜びん詰","果実びん詰", "その他"]
+                      
+fruits_categories = ["イチゴ", "マスカット", "桃", "みかん", "リンゴ", "メロン", "梨","マンゴー", "サクランボ", "パイナップル", "その他"]
+
+meat_categories = ["牛肉", "豚肉", "鶏肉", "その他"]
+
+major_category_names.each do |major_category_name|
+  
+  if major_category_name == "お菓子"
+    
+    snack_categories.each do |snack_category|
+      Genre.create(name: snack_category, description: snack_category, major_category_name: major_category_name)
+    end
+  
+  elsif major_category_name == "スイーツ"
+    
+    sweets_categories.each do |sweets_category|
+      Genre.create(
+        name: sweets_category,
+        description: sweets_category,
+        major_category_name: major_category_name
+      )
+    end
+    
+  elsif major_category_name == "冷凍食品"
+    
+    frozenfood_categories.each do |frozenfood_category|
+      Genre.create(
+        name: frozenfood_category,
+        description: frozenfood_category,
+        major_category_name: major_category_name
+      )
+    end
+  elsif major_category_name == "調味料"
+    
+    spices_categories.each do |spices_category|
+      Genre.create(
+        name: spices_category,
+        description: spices_category,
+        major_category_name: major_category_name
+      )
+    end
+  elsif major_category_name == "レトルト食品"
+    
+    retortfood_categories.each do |retortfood_category|
+      Genre.create(
+        name: retortfood_category,
+        description: retortfood_category,
+        major_category_name: major_category_name
+      )
+    end
+  elsif major_category_name == "インスタント食品"
+    
+    instantfood_categories.each do |instantfood_category|
+      Genre.create(
+        name: instantfood_category,
+        description: instantfood_category,
+        major_category_name: major_category_name
+      )
+    end
+  elsif major_category_name == "缶詰食品"
+    
+    canning_categories.each do |canning_category|
+      Genre.create(
+        name: canning_category,
+        description: canning_category,
+        major_category_name: major_category_name
+      )
+    end
+  elsif major_category_name == "びん詰め食品"
+    
+    bottled_categories.each do |bottled_category|
+      Genre.create(
+        name: bottled_category,
+        description: bottled_category,
+        major_category_name: major_category_name
+      )
+    end
+  elsif major_category_name == "果実"
+    
+    fruits_categories.each do |fruits_category|
+      Genre.create(
+        name: fruits_category,
+        description: fruits_category,
+        major_category_name: major_category_name
+      )
+    end
+  elsif major_category_name == "お肉"
+    meat_categories.each do |meat_category|
+      
+      Genre.create(
+        name: meat_category,
+        description: meat_category,
+        major_category_name: major_category_name
+      )
+    end
+  end
+end
