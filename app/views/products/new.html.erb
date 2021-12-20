@@ -1,14 +1,47 @@
-<h1>Products#new</h1>
-
-<%= form_with model: @product do |f| %>
-  <%= f.text_field :name %>
-  <%= f.text_area :description %>
-  <%= f.number_field :price %>
-  <%= f.collection_select(:category_id, @categories, :id, :type_of_taste) %>
-  <%= f.collection_select(:taste_id, @tastes, :id, :taste_intensity) %>
-  <%= f.select :recommend, @product_star_repeat_select, {} %>
-  <%= f.text_field :company %>
-  <%= f.submit "Create" %>
-<% end %>
-
-<%= link_to "Back", products_path %>
+<div class="full-page">
+  <h1 style="max-width: 1100px;margin: 0 auto;padding: 20px;font-weight: bold;">おすすめ登録</h1>
+  <div class="form-all">
+    <%= form_with model: @product do |f| %>
+      <div>
+        <%= f.label :name, "商品名" %>: <%= f.text_field :name, class: "form-control" %>
+      </div>
+      <br>
+      <div>
+        <%= f.label :name, "おすすめ度" %>: <%= f.select :recommend, @product_star_repeat_select, {}, class: "form-select" %>
+      </div>
+      <br>
+      <div>
+        <%= f.label :name, "おすすめポイント" %>: <%= f.text_area :description, class: "form-description" %>
+      </div>
+      <br>
+      <div>
+        <%= f.label :name, "値段" %>: <%= f.number_field :price, class: "form-price" %>
+      </div>
+      <br>
+      <div>
+        <%= f.label :name, "ジャンル" %>: <%= f.collection_select(:genre_id, @genres, :id, :name, prompt: "選択してください") %>
+      </div>
+      <br>
+      <div>
+        <%= f.label :name, "味の種類" %>: <%= f.collection_select(:category_id, @categories, :id, :type_of_taste, prompt: "選択してください") %>
+      </div>
+      <br>
+      <div>
+        <%= f.label :name, "味の濃さ" %>: <%= f.collection_select(:taste_id, @tastes, :id, :taste_intensity, prompt: "選択してください") %>
+      </div>
+      <br>
+      <div>
+        <%= f.label :name, "会社名" %>: <%= f.text_field :company, class: "form-control" %>
+      </div>
+      <br>
+      <div>
+        <%= f.label :name, "商品写真" %>: <%= f.file_field :images, multiple: true %>
+      </div>
+      <br>
+      <div>
+        <button type='submit' class="form-btn" style="text-align: center;">登録する</button>
+      </div>
+    <% end %>
+    <%= link_to "Back", products_path %>
+  </div>
+</div>

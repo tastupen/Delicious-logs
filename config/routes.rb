@@ -18,9 +18,10 @@ Rails.application.routes.draw do
       get "mypage", :to => "users#mypage"
       get "mypage/edit", :to => "users#edit"
       put "mypage", :to => "users#update"
-      delete "mypage/delete", :to => "users#destroy"
+      get "mypage/myposts", :to => "users#myposts"
       get "mypage/edit_password", :to =>"users#edit_password"
       put "mypage/password", :to => "users#update_password"
+      delete "mypage/delete", :to => "users#destroy"
     end
   end
   resources :products

@@ -26,6 +26,14 @@ class UsersController < ApplicationController
     end
   end
   
+  def myposts
+    @myposts = current_user.products.all
+    @categories = Category.all
+    @tastes = Taste.all
+    @genres = Genre.all
+    @product_star_repeat_select = Product.star_repeat_select
+  end
+  
   def destroy
     @user.deleted_flg = User.switch_flg(@user.deleted_flg)
     @user.update(deleted_flg: @user.deleted_flg)

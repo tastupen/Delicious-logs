@@ -40,6 +40,12 @@ gem 'kaminari'
 # 環境変数を使用できる
 gem 'dotenv-rails'
 
+#jQuery
+gem 'jquery-rails'
+
+#bootstrap
+gem 'bootstrap'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 

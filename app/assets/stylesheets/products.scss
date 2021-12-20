@@ -15,3 +15,162 @@
   background-position: center;
   background-repeat: no-repeat;
 }
+
+/* 投稿フォーム
+------------------*/
+
+.form-control {
+  width: 80%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  appearance: none;
+  border-radius: 0.25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.form-price {
+  width: 30%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  appearance: none;
+  border-radius: 0.25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.form-description {
+  width: 71.5%;
+  height: 147px;
+  resize: none;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  appearance: none;
+  border-radius: 0.25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.form-select {
+  padding: 0 50px;
+  border: 1px solid #ced4da;
+}
+
+/* メインページ
+------------------*/
+
+.main-contents {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+article {
+  width: 70%;
+  padding: 0 0 0 10%;
+}
+
+aside {
+  width: 25%;
+  padding: 0 8% 0 0;
+  margin: 15px;
+}
+
+.index-genru {
+  padding: 10px 5px 10px 15px;
+  background-color: #faf8f5;
+}
+
+.side-label {
+  width: 200px;
+  height: 20px;
+  font-family: YuGo;
+  font-size: 13px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #191919;
+  display: inline-block;
+}
+
+.index-product {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.index-display {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product {
+  margin: 10px 20px 0 0;
+  padding-top: 5px;
+  border: solid 1px #dcdcdc;
+}
+
+.product:hover {
+  box-shadow: 1px 1px 12px rgba(0,0,0,.65);
+}
+
+.image {
+  width: 150px;
+  padding: 0 5px;
+  margin: 0 20px
+}
+
+.product-display {
+  display: flex;
+  font-size: small;
+  padding: 0 5px;
+}
+
+/* 商品詳細ページ
+-------------------*/
+
+.product-show {
+  max-width: 1100px;
+  margin: 20px auto;
+}
+
+.back-btn {
+  padding: 0.5rem 1rem;
+  font-size: 1.25rem;
+  border-radius: 0.3rem;
+  background-color: #ff8c00;
+  width: 30%;
+  max-width: 1100px;
+  margin-left: 145px;
+  margin-bottom: 20px;
+}
+
+.index-show-display {
+  display: flex;
+  justify-content: space-around;
+}
+
+.show-image {
+  width: 350px;
+}
+
+.show-product-font {
+  font-weight: bold;
+  margin-right: 10px;
+}

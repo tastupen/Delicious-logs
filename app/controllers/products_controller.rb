@@ -2,7 +2,9 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   
   def index
-    @products = current_user.products.all
+    @products = Product.all
+    @major_category_names = Genre.major_categories
+    @genres = Genre.all
   end
 
   def show
@@ -12,6 +14,7 @@ class ProductsController < ApplicationController
     @product = current_user.products.new
     @categories = Category.all
     @tastes = Taste.all
+    @genres = Genre.all
     @product_star_repeat_select = Product.star_repeat_select
   end
 
@@ -28,11 +31,13 @@ class ProductsController < ApplicationController
   def edit
     @categories = Category.all
     @tastes = Taste.all
+    @genres = Genre.all
+    @product_star_repeat_select = Product.star_repeat_select
   end
 
   def update
-    if @product.update(goal_params)
-      redirect_to product_url @product, notice: "投稿をアップデートしました"
+    if @product.update(product_params)
+      redirect_to mypage_myposts_users_path, notice: "投稿をアップデートしました"
     else
       redirect_to edit_product_path(product), alert: "アップデートに失敗しました"
     end
@@ -51,6 +56,6 @@ class ProductsController < ApplicationController
     end
     
     def product_params
-      params.require(:product).permit( :name, :description, :price, :category_id, :taste_id, :recommend, :user_id, :company)
+      params.require(:product).permit( :name, :description, :price, :category_id, :taste_id, :recommend, :user_id, :company, :genre_id, images: [])
     end
 end

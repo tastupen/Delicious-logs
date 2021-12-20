@@ -68,3 +68,20 @@
   background-color: #ff8c00;
   width: 60%;
 }
+
+/* 自分の投稿
+---------------------*/
+
+.myposts-display {
+  display: flex;
+  justify-content: space-around;
+}
+
+.menuSub {
+  display: none;
+  background-color: #ff8c00;
+  
+  li {
+    height: 5%;
+  }
+}

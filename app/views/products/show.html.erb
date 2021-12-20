@@ -1,11 +1,32 @@
-<h1>Products#show</h1>
-
-<%= @product.name %>
-<%= @product.description %>
-<%= @product.price %>
-<%= @product.categoty.type_of_taste %>
-<%= @product.teste.taste_intensity %>
-<%= score_on_star(@product.recommend) %>
-<%= @product.campany %>
-
-<%= link_to "Back", products_path %>
+<div class="index-page">
+  <h2 style="max-width: 1100px;margin: 0 auto;padding: 20px;">商品詳細ページ</h2>
+  <%= link_to "戻る", products_path, class: "back-btn" %>
+  <div class="product-show">
+    <div class="index-show-display">
+      <div>
+        <% if @product.images.attached? %>
+          <%= image_tag @product.image, class: "show-image" %>
+        <% else %>
+          <%= image_tag "/images/dummy.png", class: "show-image" %>
+        <% end %>
+      </div>
+      <div>
+        <div><label class="show-product-font">商品名:</label><%= @product.name %></div>
+        <br>
+        <div><label class="show-product-font">おすすめ度:</label><%= score_on_star(@product.recommend) %></div>
+        <br>
+        <div><label class="show-product-font">おすすめポイント:</label><%= @product.description %></div>
+        <br>
+        <div><label class="show-product-font">値段:</label><%= @product.price %>円</div>
+        <br>
+        <div><label class="show-product-font">ジャンル:</label><%= @product.genre.name %></div>
+        <br>
+        <div><label class="show-product-font">味の種類:</label><%= @product.category.type_of_taste %></div>
+        <br>
+        <div><label class="show-product-font">味の濃さ:</label><%= @product.taste.taste_intensity %></div>
+        <br>
+        <div><label class="show-product-font">会社名:</label><%= @product.company %></div>
+      </div>
+    </div>
+  </div>
+</div>

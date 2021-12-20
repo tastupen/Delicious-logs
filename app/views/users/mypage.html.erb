@@ -23,9 +23,26 @@
     <div class="mypage-flex">
       <div class="label-flex">
         <div>
+          <i class="fas fa-edit fa-3x"></i>
+        </div>
+        <div class="label">
+          <label for="user-name">あなたの投稿一覧</label>
+          <P>投稿したものやいいねしたものなどが見れます！</P>
+        </div>
+      </div>
+      <%= link_to mypage_myposts_users_path do %>
+        <i class="fas fa-chevron-right fa-2x"></i>
+      <% end %>
+    </div>
+    
+    <hr>
+    
+    <div class="mypage-flex">
+      <div class="label-flex">
+        <div>
           <i class="fas fa-lock fa-3x"></i>
         </div>
-        <div>
+        <div class="label">
           <label for="user-name">パスワード変更</label>
           <p>パスワードを変更します</p>
         </div>
