@@ -36,6 +36,16 @@ body {
   background-color: #faf8f5;
 }
 
+#notice {
+  color: #fff;
+  background-color : green;
+}
+
+#alert {
+  color: #fff;
+  background-color : red;
+}
+
 /* header
 --------------*/
 
@@ -67,3 +77,9 @@ body {
   color: #0bd;
 }
 
+/*footer
+-----------------*/
+footer {
+  text-align: center;
+  margin-top: auto;
+}
