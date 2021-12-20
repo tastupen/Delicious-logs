@@ -9,7 +9,9 @@
             <div class="product" id="product_<%= product.id %>">
               <%= link_to product_path(product) do %>
                 <% if product.images.attached? %>
-                  <%= image_tag product.image, class: "image" %>
+                  <% product.images.each do |image| %>
+                    <%= image_tag image, class: "image" %>
+                  <% end %>
                 <% else %>
                   <%= image_tag "/images/dummy.png", class: "image" %>
                 <% end %>

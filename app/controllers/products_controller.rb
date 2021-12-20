@@ -8,6 +8,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @user = current_user
   end
 
   def new

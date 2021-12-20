@@ -7,6 +7,10 @@
         <span><%= image_tag "/images/うまログ.png", class: "logo" %></span>
         
         <div>
+          <%=f.label :image, "アバター" %>: <%= f.file_field :image %>
+        </div>
+        <br>
+        <div>
           <%= f.label :name, "ニックネーム" %>: <%= f.text_field :name, autofocus: true, autocomplete: "name", style: "border: solid 1px;" %>
         </div>
         <br>

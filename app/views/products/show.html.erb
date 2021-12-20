@@ -5,10 +5,23 @@
     <div class="index-show-display">
       <div>
         <% if @product.images.attached? %>
-          <%= image_tag @product.image, class: "show-image" %>
+          <% @product.images.each do |image| %>
+            <%= image_tag image, class: "show-image" %>
+          <% end %>
         <% else %>
           <%= image_tag "/images/dummy.png", class: "show-image" %>
         <% end %>
+        <h1 style="padding: 20px;">投稿者</h1>
+        <div class="avator-display">
+          <div style="padding: 20px;">
+            <% if @user.image.attached? %>
+              <%= image_tag @user.image, class: "image" %>
+            <% else %>
+              <i class="fas fa-user fa-3x"></i>
+            <% end %>
+          </div>
+          <div style="margin: 34px;"><%= @user.name %>さん</div>
+        </div>
       </div>
       <div>
         <div><label class="show-product-font">商品名:</label><%= @product.name %></div>

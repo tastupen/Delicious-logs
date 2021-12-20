@@ -20,6 +20,8 @@ class User < ApplicationRecord
     likes.where(product_id: product_id).exists?
   end
   
+  has_one_attached :image
+  
   extend SwitchFlg
   
   devise :database_authenticatable, :registerable,
