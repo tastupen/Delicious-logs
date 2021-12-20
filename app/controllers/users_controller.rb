@@ -27,11 +27,12 @@ class UsersController < ApplicationController
   end
   
   def myposts
-    @myposts = current_user.products.all
+    @myposts = current_user.products.all.order(created_at: :desc)
     @categories = Category.all
     @tastes = Taste.all
     @genres = Genre.all
     @product_star_repeat_select = Product.star_repeat_select
+    @likes = Like.where(user_id: current_user.id).order(created_at: :desc)
   end
   
   def destroy

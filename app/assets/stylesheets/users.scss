@@ -75,6 +75,7 @@
 .myposts-display {
   display: flex;
   justify-content: space-around;
+  border-bottom: solid 1px #ced4da;
 }
 
 .menuSub {
@@ -84,4 +85,11 @@
   li {
     height: 5%;
   }
+}
+
+.myposts-likes-display {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: solid 1px #ced4da;
+  padding-top: 20px;
 }

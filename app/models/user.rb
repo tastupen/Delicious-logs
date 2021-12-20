@@ -14,6 +14,12 @@ class User < ApplicationRecord
     result
   end
   
+  has_many :likes
+  
+  def liked_by?(product_id)
+    likes.where(product_id: product_id).exists?
+  end
+  
   extend SwitchFlg
   
   devise :database_authenticatable, :registerable,

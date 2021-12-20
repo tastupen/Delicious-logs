@@ -6,6 +6,8 @@ class Product < ApplicationRecord
   
   has_many_attached :images
   
+  has_many :likes
+  
   scope :star_repeat_select, -> { 
     {
       "★★★★★" => 5, 

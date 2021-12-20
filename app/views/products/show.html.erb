@@ -26,6 +26,10 @@
         <div><label class="show-product-font">味の濃さ:</label><%= @product.taste.taste_intensity %></div>
         <br>
         <div><label class="show-product-font">会社名:</label><%= @product.company %></div>
+        <br>
+        <div id="product_likes_<%= @product.id %>">
+          <%= render partial: "like" %>
+        </div>
       </div>
     </div>
   </div>

@@ -24,6 +24,11 @@ Rails.application.routes.draw do
       delete "mypage/delete", :to => "users#destroy"
     end
   end
+  
+  #likes
+  post 'like/:id' => 'likes#create', as: 'create_like'
+  delete 'like/:id' => 'likes#destroy', as: 'destroy_like'
+  
   resources :products
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "home#index"

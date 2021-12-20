@@ -3,10 +3,10 @@
   <article>
     <div class="index-page">
       <div class="index-product">
-        <h1 style="max-width: 1100px;margin: 0 auto;padding: 20px;">商品一覧</h1>
+        <h1 style="max-width: 1100px;margin: 0 auto;padding: 20px;font-weight: bold;">商品一覧</h1>
         <div class="index-display">
           <% @products.each do |product| %>
-            <div class="product">
+            <div class="product" id="product_<%= product.id %>">
               <%= link_to product_path(product) do %>
                 <% if product.images.attached? %>
                   <%= image_tag product.image, class: "image" %>
@@ -22,6 +22,19 @@
                 </div>
                 <div style="padding: 0 5px;">
                   <%= score_on_star(product.recommend) %>
+                </div>
+                <div id="product_likes_<%= product.id %>" style="padding: 0 5px;">
+                  <% if current_user.liked_by?(product.id) %>
+                    <%= link_to destroy_like_path(product), method: :DELETE, remote: true do %>
+                      <i class="fa fa-heart unlike-btn"></i>
+                    <% end %>
+                    <%= product.likes.count %>
+                  <% else %>
+                    <%= link_to create_like_path(product), method: :POST, remote: true do %>
+                      <i class="fa fa-heart like-btn"></i>
+                    <% end %>
+                    <%= product.likes.count %>
+                  <% end %>
                 </div>
               <% end %>
             </div>

@@ -1,0 +1,13 @@
+<div>
+  <% if current_user.liked_by?(@product.id) %>
+    <%= link_to destroy_like_path(@product), method: :DELETE, remote: true do %>
+      <i class="fa fa-heart unlike-btn"></i>
+    <% end %>
+    <%= @product.likes.count %>
+  <% else %>
+    <%= link_to create_like_path(@product), method: :POST, remote: true do %>
+      <i class="fa fa-heart like-btn"></i>
+    <% end %>
+    <%= @product.likes.count %>
+  <% end %>
+</div>
