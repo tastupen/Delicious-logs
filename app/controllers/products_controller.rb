@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
     @products = Product.all
     @major_category_names = Genre.major_categories
     @genres = Genre.all
+    @user = current_user
   end
 
   def show

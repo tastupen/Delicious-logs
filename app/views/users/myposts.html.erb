@@ -6,7 +6,9 @@
       　<div class="myposts-display">
       　   <div>
       　     <% if product.images.attached? %>
-              <%= image_tag product.image, class: "image" %>
+      　       <% product.images.each do |image| %>
+                <%= image_tag image, class: "show-post-image" %>
+              <% end %>
             <% else %>
               <%= image_tag "/images/dummy.png", class: "image" %>
             <% end %>

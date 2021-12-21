@@ -44,6 +44,11 @@
   text-align: center;
 }
 
+.mypage-edit-profile {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
 .form-all {
   margin: 0 200px;
   background-color: #fff;
@@ -56,6 +61,15 @@
   border-radius: 0.3rem;
   background-color: #ff8c00;
   width: 30%;
+}
+
+.user-profile-image {
+  width: 60px;
+  padding: 0 5px;
+}
+
+.input[type="file"] {
+  
 }
 
 /* パスワードリセット
@@ -92,4 +106,10 @@
   justify-content: space-around;
   border-bottom: solid 1px #ced4da;
   padding-top: 20px;
+}
+
+.show-post-image {
+  width: 150px;
+  padding: 0 5px;
+  height: 130px;
 }

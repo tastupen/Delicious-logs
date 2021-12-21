@@ -15,7 +15,7 @@
         <div class="avator-display">
           <div style="padding: 20px;">
             <% if @user.image.attached? %>
-              <%= image_tag @user.image, class: "image" %>
+              <%= image_tag @user.image, class: "user-image" %>
             <% else %>
               <i class="fas fa-user fa-3x"></i>
             <% end %>

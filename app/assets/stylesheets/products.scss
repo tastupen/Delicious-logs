@@ -91,6 +91,13 @@ aside {
   margin: 15px;
 }
 
+.index-avator-display {
+  display: flex;
+  background-color: #faf8f5;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
 .index-genru {
   padding: 10px 5px 10px 15px;
   background-color: #faf8f5;
@@ -164,6 +171,7 @@ aside {
 .index-show-display {
   display: flex;
   justify-content: space-around;
+  border-bottom: solid 1px #ced4da;
 }
 
 .show-image {
@@ -179,4 +187,10 @@ aside {
   display: flex;
   border: solid 1px #ced4da;
   border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.user-image {
+  width: 60px;
+  padding: 0 5px; 
 }

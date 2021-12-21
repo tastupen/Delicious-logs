@@ -46,6 +46,24 @@
     </div>
   </article>
   <aside>
+    <div>
+      <p style="font-weight: bold;">ユーザー名</p>
+    </div>
+    <div class="index-avator-display">
+      <% if user_signed_in? %>
+        <% if @user.image.attached? %>
+          <%= image_tag @user.image, class: "user-image" %>
+        <% else %>
+          <i class="fas fa-user fa-3x"></i>
+        <% end %>
+        <div style="margin-top: 15px;margin-left: 10px;">
+          <div><%= @user.name %></div>
+          <div><%= @user.email %></div>
+        </div>
+      <% else %>
+        <%= link_to "サインイン", new_user_registration_path %>
+      <% end %>
+    </div>
     <div class="side-title">
       <p style="font-weight: bold;">ジャンル</p>
     </div>
