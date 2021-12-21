@@ -24,6 +24,8 @@ class User < ApplicationRecord
   
   extend SwitchFlg
   
+  has_many :reviews
+  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'reviews/create'
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
     :sessions => "users/sessions",
@@ -29,7 +30,9 @@ Rails.application.routes.draw do
   post 'like/:id' => 'likes#create', as: 'create_like'
   delete 'like/:id' => 'likes#destroy', as: 'destroy_like'
   
-  resources :products
+  resources :products do
+    resources :reviews, only: [:create]
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "home#index"
 end

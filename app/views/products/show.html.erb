@@ -45,6 +45,24 @@
         </div>
       </div>
     </div>
+    <h1 class="review-zoon">レビューゾーン</h1>
+    <% if user_signed_in? %>
+      <div class="review-post">
+        <div>
+          <%= form_with model: @review, url: product_reviews_path(@product), remote: true  do |f| %>
+            <h4 class="review-assess">評価</h4>
+            <%= f.select :score, @star_repeat_select, {}, class: "review-score" %>
+            <h4 class="review-assess">レビュー内容</h4>
+            <%= f.text_area :content, class: "review-about" %>
+            <div><%= f.submit "レビューを追加", class: "review-btn" %></div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    <br>
+    <div id="review">
+      <%= render @reviews %>
+    </div>
   </div>
 </div>
 <%= render "layouts/footer" %>
