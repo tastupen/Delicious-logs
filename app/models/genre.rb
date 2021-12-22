@@ -5,11 +5,5 @@ class Genre < ApplicationRecord
     pluck(:major_category_name).uniq
   end
   
-  scope :request_genre, -> (genre) {
-    if genre != "none"
-      find(genre.to_i)
-    else
-      ""
-    end
-  }
+  scope :request_genre, -> (genre) { find(genre.to_i) }
 end

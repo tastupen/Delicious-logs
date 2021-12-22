@@ -7,6 +7,15 @@
           <% if @genre.present? %>
             <%= link_to "トップ", "/", category: @major_category_name %> > <%= @genre.name %>
             <h1><%= @genre.name %>の商品一覧<%= @products.count %>件</h1>
+            <%= form_with url: products_path, method: :get, local: true do |f| %>
+              <%= f.hidden_field :sort_genre, value: @genre.id %>
+              並び替え
+              <% if @sorted.present? %>
+                <%= f.select :sort, @sort_list, selected: @sorted, onChange: "javascript: this.form.submit();" %>
+              <% else %>
+                <%= f.select :sort, @sort_list, {}, onChange: "javascript: this.form.submit();" %>
+              <% end %>
+            <% end %>
           <% else %>
             <h1>商品一覧</h1>
           <% end %>
