@@ -4,7 +4,7 @@
     <% categories.each do |category| %>
       <% if category.major_category_name == major_category_name %>
         <label class="side-label">
-          <%= link_to category.name, products_path(category: category.id) %>
+          <%= link_to category.name, products_path(genre: category.id) %>
         </label>
       <% end %>
     <% end %>

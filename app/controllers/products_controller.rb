@@ -2,8 +2,9 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   
   def index
-    @products = Product.all
+    @products = Product.display_list(genre_params, params[:page])
     @major_category_names = Genre.major_categories
+    @genre = Genre.request_genre(genre_params)
     @genres = Genre.all
     @user = current_user
   end
@@ -62,5 +63,10 @@ class ProductsController < ApplicationController
     
     def product_params
       params.require(:product).permit( :name, :description, :price, :category_id, :taste_id, :recommend, :user_id, :company, :genre_id, images: [])
+    end
+    
+    def genre_params
+      params[:genre].present? ?params[:genre]
+                              : "none"
     end
 end

@@ -28,4 +28,14 @@ class Product < ApplicationRecord
     }
   }
   
+  PER = 6
+  
+  scope :display_list, -> (genre, page) {
+    if genre != "none"
+      where(genre_id: genre).page(page).per(PER)
+    else
+      page(page).per(PER)
+    end
+  }
+  
 end

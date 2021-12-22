@@ -3,7 +3,14 @@
   <article>
     <div class="index-page">
       <div class="index-product">
-        <h1 style="max-width: 1100px;margin: 0 auto;padding: 20px;font-weight: bold;">商品一覧</h1>
+        <div style="max-width: 1100px;margin: 0 auto;padding: 20px;font-weight: bold;">
+          <% if @genre.present? %>
+            <%= link_to "トップ", "/", category: @major_category_name %> > <%= @genre.name %>
+            <h1><%= @genre.name %>の商品一覧<%= @products.count %>件</h1>
+          <% else %>
+            <h1>商品一覧</h1>
+          <% end %>
+        </div>
         <div class="index-display">
           <% @products.each do |product| %>
             <div class="product" id="product_<%= product.id %>">
@@ -43,6 +50,7 @@
           <% end %>
         </div>
       </div>
+      <%= paginate @products %>
     </div>
   </article>
   <aside>
