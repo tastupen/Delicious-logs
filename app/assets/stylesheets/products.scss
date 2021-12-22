@@ -140,7 +140,8 @@ aside {
 .image {
   width: 150px;
   padding: 0 5px;
-  margin: 0 20px
+  margin: 0 20px;
+  height: 120px;
 }
 
 .product-display {
@@ -193,4 +194,54 @@ aside {
 .user-image {
   width: 60px;
   padding: 0 5px; 
+}
+
+/* レビューの部分
+----------------------*/
+
+.review-zoon {
+  margin-left: 620px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.review-post {
+  margin-left: 620px;
+  padding-left: 15px;
+  margin-top: 10px;
+}
+
+.review-assess {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.review-score {
+  color: orange;
+  padding: 0 40px;
+}
+
+.review-about {
+  margin: 0px;
+  height: 71px;
+  width: 298px;
+  resize: none;
+  padding: 5px;
+}
+
+.review-btn {
+  margin-top: 10px;
+  background-color: orange;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.review-score-color {
+  color: orange;
+}
+
+.review-content {
+  margin-left: 620px;
+  padding-left: 15px;
+  margin-top: 10px;
 }
