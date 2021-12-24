@@ -7,31 +7,35 @@
       </div>
       <br>
       <div>
-        <%= f.label :name, "おすすめ度" %>: <%= f.select :recommend, @product_star_repeat_select, {}, class: "form-select" %>
+        <%= f.label :recommend, "おすすめ度" %>: <%= f.select :recommend, @product_star_repeat_select, {}, class: "form-select" %>
       </div>
       <br>
       <div>
-        <%= f.label :name, "おすすめポイント" %>: <%= f.text_area :description, class: "form-description" %>
+        <%= f.label :description, "おすすめポイント" %>: <%= f.text_area :description, class: "form-description" %>
       </div>
       <br>
       <div>
-        <%= f.label :name, "値段" %>: <%= f.number_field :price, class: "form-price" %>
+        <%= f.label :price, "値段" %>: <%= f.number_field :price, class: "form-price" %>
       </div>
       <br>
       <div>
-        <%= f.label :name, "ジャンル" %>: <%= f.collection_select(:genre_id, @genres, :id, :name, prompt: "選択してください") %>
+        <%= f.label :genre, "ジャンル" %>: <%= f.collection_select(:genre_id, @genres, :id, :name, prompt: "選択してください") %>
       </div>
       <br>
       <div>
-        <%= f.label :name, "味の種類" %>: <%= f.collection_select(:category_id, @categories, :id, :type_of_taste, prompt: "選択してください") %>
+        <%= f.label :category, "味の種類" %>: <%= f.collection_select(:category_id, @categories, :id, :type_of_taste, prompt: "選択してください") %>
       </div>
       <br>
       <div>
-        <%= f.label :name, "味の濃さ" %>: <%= f.collection_select(:taste_id, @tastes, :id, :taste_intensity, prompt: "選択してください") %>
+        <%= f.label :taste, "味の濃さ" %>: <%= f.collection_select(:taste_id, @tastes, :id, :taste_intensity, prompt: "選択してください") %>
       </div>
       <br>
       <div>
-        <%= f.label :name, "会社名" %>: <%= f.text_field :company, class: "form-control" %>
+        <%= f.label :instagram, "インスタ映えする？" %>: <%= f.check_box :instagram %>
+      </div>
+      <br>
+      <div>
+        <%= f.label :company, "会社名" %>: <%= f.text_field :company, class: "form-control" %>
       </div>
       <br>
       <div>
@@ -44,7 +48,7 @@
       </div>
       <br>
       <div>
-        <%= f.label :name, "商品写真" %>: <%= f.file_field :images, multiple: true %>
+        <%= f.label :images, "商品写真" %>: <%= f.file_field :images, multiple: true %>
       </div>
       <br>
       <div>

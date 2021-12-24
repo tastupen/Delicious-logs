@@ -19,7 +19,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @user = current_user
+    @user = User.find_by(id: @product.user_id)
     @reviews = @product.reviews_with_id.order(created_at: :desc)
     @review = @reviews.new
     @star_repeat_select = Review.star_repeat_select
@@ -37,7 +37,7 @@ class ProductsController < ApplicationController
     @product = current_user.products.new(product_params)
     
     if @product.save
-      redirect_to products_path, notice: "投稿に成功しました"
+      redirect_to root_path, notice: "投稿に成功しました"
     else
       redirect_to new_product_path, alert: "投稿に失敗しました"
     end
@@ -66,12 +66,12 @@ class ProductsController < ApplicationController
   private
   
     def set_product
-      @product = current_user.products.find_by(id: params[:id])
+      @product = Product.find_by(id: params[:id])
       redirect_to(products_url, alert: "ERROR!!") if @product.blank?
     end
     
     def product_params
-      params.require(:product).permit( :name, :description, :price, :category_id, :taste_id, :recommend, :user_id, :company, :genre_id, images: [])
+      params.require(:product).permit( :name, :description, :price, :category_id, :taste_id, :recommend, :instagram, :user_id, :company, :genre_id, images: [])
     end
     
     def sort_params

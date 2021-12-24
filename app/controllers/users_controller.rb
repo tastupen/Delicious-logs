@@ -33,6 +33,7 @@ class UsersController < ApplicationController
     @genres = Genre.all
     @product_star_repeat_select = Product.star_repeat_select
     @likes = Like.where(user_id: current_user.id).order(created_at: :desc)
+    @reviews = Review.select(:user_id, :product_id).distinct.order(created_at: :desc)
   end
   
   def destroy

@@ -28,7 +28,7 @@ class Product < ApplicationRecord
     }
   }
   
-  PER = 6
+  PER = 12
   scope :display_list, -> (page) { page(page).per(PER) }
   scope :on_genre, -> (genre) { where(genre_id: genre) }
   scope :sort_order, -> (order) { order(order) }
@@ -50,4 +50,6 @@ class Product < ApplicationRecord
     }
   }
   
+  scope :recently_products, -> (number) { order(created_at: "desc").take(number) }
+  scope :instagram_products, -> (number) { where(instagram: true).take(number) }
 end

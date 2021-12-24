@@ -42,13 +42,20 @@
                   <%= score_on_star(product.recommend) %>
                 </div>
                 <div id="product_likes_<%= product.id %>" style="padding: 0 5px;">
-                  <% if current_user.liked_by?(product.id) %>
-                    <%= link_to destroy_like_path(product), method: :DELETE, remote: true do %>
-                      <i class="fa fa-heart unlike-btn"></i>
+                  <% if current_user.present? %>
+                    <% if current_user.liked_by?(product.id) %>
+                      <%= link_to destroy_like_path(product), method: :DELETE, remote: true do %>
+                        <i class="fa fa-heart unlike-btn"></i>
+                      <% end %>
+                      <%= product.likes.count %>
+                    <% else %>
+                      <%= link_to create_like_path(product), method: :POST, remote: true do %>
+                        <i class="fa fa-heart like-btn"></i>
+                      <% end %>
+                      <%= product.likes.count %>
                     <% end %>
-                    <%= product.likes.count %>
                   <% else %>
-                    <%= link_to create_like_path(product), method: :POST, remote: true do %>
+                    <%= link_to  new_user_registration_path do %>
                       <i class="fa fa-heart like-btn"></i>
                     <% end %>
                     <%= product.likes.count %>

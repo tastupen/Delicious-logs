@@ -129,8 +129,9 @@ aside {
 
 .product {
   margin: 10px 20px 0 0;
-  padding-top: 5px;
+  padding-top: 10px;
   border: solid 1px #dcdcdc;
+  width: 300px;
 }
 
 .product:hover {
@@ -140,7 +141,7 @@ aside {
 .image {
   width: 150px;
   padding: 0 5px;
-  margin: 0 20px;
+  margin: 0 70px;
   height: 120px;
 }
 
@@ -148,6 +149,10 @@ aside {
   display: flex;
   font-size: small;
   padding: 0 5px;
+}
+
+.product-score {
+  color: orange;
 }
 
 /* ページネーション

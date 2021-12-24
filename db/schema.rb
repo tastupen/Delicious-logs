@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_21_155626) do
+ActiveRecord::Schema.define(version: 2021_12_23_211611) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 2021_12_21_155626) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "genre_id"
+    t.boolean "instagram", default: false
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["genre_id"], name: "index_products_on_genre_id"
     t.index ["taste_id"], name: "index_products_on_taste_id"
