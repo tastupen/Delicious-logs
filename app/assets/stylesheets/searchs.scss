@@ -1,0 +1,38 @@
+// Place all the styles related to the Searchs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* 検索フォーム
+------------------*/
+
+.search-display {
+  display: flex;
+}
+
+.search-form {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 50px;
+  
+  input[type="text"] {
+    width: 500px;
+    height: 40px;
+    border-radius: 3px;
+    margin-left: 5px;
+  }
+ }
+
+.search-label {
+  font-weight: bold;
+  margin-left: 100px;
+  padding: 5px;
+}
+
+.search-btn {
+  height: 40px;
+  padding: 0 24px;
+  width: 80px;
+  background-color: orange;
+  border-radius: 3px;
+  color: #fff;
+}

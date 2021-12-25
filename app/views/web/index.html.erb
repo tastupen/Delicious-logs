@@ -1,11 +1,16 @@
 <div id="home" class="big-bg"></div>
+<div class="search-form">
+  <%= form_with url: search_path, method: :get, local: true do |f| %>
+    <div class="search-display">
+      <div><%= f.label :keyword, "食べ物を探す", class: "search-label" %>: <%= f.text_field :keyword, placeholder: "キーワードを入力"  %></div>
+      <div><%= f.submit "検索", class: "search-btn" %></div>
+    </div>
+  <% end %>
+</div>
 <div class="main-contents">
   <article>
     <div class="index-page">
       <div class="index-product">
-        <div style="max-width: 1100px;margin: 0 auto;padding: 20px;font-weight: bold;">
-          <h1>トップページ</h1>
-        </div>
         <h1 style="font-weight: bold;">インスタ映えする商品</h1>
         <div class="index-display">
           <% @instagrams.each do |instagram| %>
@@ -154,7 +159,7 @@
       <% end %>
     </div>
     <div class="side-title">
-      <p style="font-weight: bold;">ジャンル</p>
+      <p style="font-weight: bold;">ジャンル検索</p>
     </div>
     <div>
       <%= render partial: "layouts/sidebar", locals: { categories: @genres, major_category_names: @major_category_names } %>

@@ -52,4 +52,9 @@ class Product < ApplicationRecord
   
   scope :recently_products, -> (number) { order(created_at: "desc").take(number) }
   scope :instagram_products, -> (number) { where(instagram: true).take(number) }
+  
+  #search
+  def self.search(keyword)
+    where(["name like? OR price like? OR company like?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
+  end
 end
