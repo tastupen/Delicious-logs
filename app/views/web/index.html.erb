@@ -11,141 +11,19 @@
   <article>
     <div class="index-page">
       <div class="index-product">
-        <h1 style="font-weight: bold;">インスタ映えする商品</h1>
-        <div class="index-display">
-          <% @instagrams.each do |instagram| %>
-            <div class="product" id="product_<%= instagram.id %>">
-              <%= link_to product_path(instagram) do %>
-                <% if instagram.images.attached? %>
-                  <% instagram.images.each do |image| %>
-                    <%= image_tag image, class: "image" %>
-                  <% end %>
-                <% else %>
-                  <%= image_tag "/images/dummy.png", class: "image" %>
-                <% end %>
-                <div style="padding: 0 5px;">
-                  <%= instagram.name %>
-                </div>
-                <div class="product-display">
-                  <div><%= instagram.genre.name %>/</div>
-                  <div><%=instagram.company %></div>
-                </div>
-                <div style="padding: 0 5px;" class="product-score">
-                  <%= score_on_star(instagram.recommend) %>
-                </div>
+        <h1 style="font-weight: bold;">ジャンル検索</h1>
+        <div>
+          <% @major_category_names.each do |major_category_name| %>
+            <% @genres.each do |category| %>
+              <% if category.major_category_name == major_category_name %>
+                <label class="side-label">
+                  <%= link_to category.name, products_path(genre: category.id) %>
+                </label>
               <% end %>
-            </div>
+            <% end %>
           <% end %>
         </div>
-        <br>
-        <h1 style="font-weight: bold;">おすすめ商品</h1>
-        <div class="index-display">
-          <% @good_products.each do |good_product| %>
-            <div class="product" id="product_<%= good_product.id %>">
-              <%= link_to product_path(good_product) do %>
-                <% if good_product.images.attached? %>
-                  <% good_product.images.each do |image| %>
-                    <%= image_tag image, class: "image" %>
-                  <% end %>
-                <% else %>
-                  <%= image_tag "/images/dummy.png", class: "image" %>
-                <% end %>
-                <div style="padding: 0 5px;">
-                  <%= good_product.name %>
-                </div>
-                <div class="product-display">
-                  <div><%= good_product.genre.name %>/</div>
-                  <div><%= good_product.company %></div>
-                </div>
-                <div style="padding: 0 5px;" class="product-score">
-                  <%= score_on_star(good_product.recommend) %>
-                </div>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
-        <br>
-        <h1 style="font-weight: bold;">新着商品</h1>
-        <div class="index-display">
-          <% @recently_products.each do |recently_product| %>
-            <div class="product" id="product_<%= recently_product.id %>">
-              <%= link_to product_path(recently_product) do %>
-                <% if recently_product.images.attached? %>
-                  <% recently_product.images.each do |image| %>
-                    <%= image_tag image, class: "image" %>
-                  <% end %>
-                <% else %>
-                  <%= image_tag "/images/dummy.png", class: "image" %>
-                <% end %>
-                <div style="padding: 0 5px;">
-                  <%= recently_product.name %>
-                </div>
-                <div class="product-display">
-                  <div><%= recently_product.genre.name %>/</div>
-                  <div><%= recently_product.company %></div>
-                </div>
-                <div style="padding: 0 5px;" class="product-score">
-                  <%= score_on_star(recently_product.recommend) %>
-                </div>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
-        <br>
-        <h1 style="font-weight: bold;">レビューから探す</h1>
-        <div class="index-display">
-          <% @good_reviews.each do |good_review| %>
-            <div class="product" id="product_<%= good_review.id %>">
-              <%= link_to product_path(good_review) do %>
-                <% if good_review.images.attached? %>
-                  <% good_review.images.each do |image| %>
-                    <%= image_tag image, class: "image" %>
-                  <% end %>
-                <% else %>
-                  <%= image_tag "/images/dummy.png", class: "image" %>
-                <% end %>
-                <div style="padding: 0 5px;">
-                  <%= good_review.name %>
-                </div>
-                <div class="product-display">
-                  <div><%= good_review.genre.name %>/</div>
-                  <div><%= good_review.company %></div>
-                </div>
-                <div style="padding: 0 5px;" class="product-score">
-                  <%= score_on_star(good_review.recommend) %>
-                </div>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
-        <br>
-        <h1 style="font-weight: bold;">いいねランキング</h1>
-        <div class="index-display">
-          <% @likes.each do |like| %>
-            <div class="product" id="product_<%= like.id %>">
-              <%= link_to product_path(like) do %>
-                <% if like.images.attached? %>
-                  <% like.images.each do |image| %>
-                    <%= image_tag image, class: "image" %>
-                  <% end %>
-                <% else %>
-                  <%= image_tag "/images/dummy.png", class: "image" %>
-                <% end %>
-                <div style="padding: 0 5px;">
-                  <%= like.name %>
-                </div>
-                <div class="product-display">
-                  <div><%= like.genre.name %>/</div>
-                  <div><%= like.company %></div>
-                </div>
-                <div style="padding: 0 5px;" class="product-score">
-                  <%= score_on_star(like.recommend) %>
-                </div>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
-        <br>
+        <div class="genre-btn"><%= link_to "ジャンル一覧", genres_path %></div>
       </div>
     </div>
   </article>
@@ -169,11 +47,144 @@
       <% end %>
     </div>
     <div class="side-title">
-      <p style="font-weight: bold;">ジャンル検索</p>
-    </div>
-    <div>
-      <%= render partial: "layouts/sidebar", locals: { categories: @genres, major_category_names: @major_category_names } %>
     </div>
   </aside>
+</div>
+<div class="index-product">
+  <h1 style="font-weight: bold;">インスタ映えする商品</h1>
+  <div class="index-display">
+    <% @instagrams.each do |instagram| %>
+      <div class="product" id="product_<%= instagram.id %>">
+        <%= link_to product_path(instagram) do %>
+          <% if instagram.images.attached? %>
+            <% instagram.images.each do |image| %>
+              <%= image_tag image, class: "image" %>
+            <% end %>
+          <% else %>
+            <%= image_tag "/images/dummy.png", class: "image" %>
+          <% end %>
+          <div style="padding: 0 5px;">
+            <%= instagram.name %>
+          </div>
+          <div class="product-display">
+            <div><%= instagram.genre.name %>/</div>
+            <div><%=instagram.company %></div>              
+          </div>
+          <div style="padding: 0 5px;" class="product-score">
+            <%= score_on_star(instagram.recommend) %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <br>
+  <h1 style="font-weight: bold;">おすすめ商品</h1>
+  <div class="index-display">
+    <% @good_products.each do |good_product| %>
+      <div class="product" id="product_<%= good_product.id %>">
+        <%= link_to product_path(good_product) do %>
+          <% if good_product.images.attached? %>
+            <% good_product.images.each do |image| %>
+              <%= image_tag image, class: "image" %>
+            <% end %>
+          <% else %>
+            <%= image_tag "/images/dummy.png", class: "image" %>
+          <% end %>
+          <div style="padding: 0 5px;">
+            <%= good_product.name %>
+          </div>
+          <div class="product-display">
+            <div><%= good_product.genre.name %>/</div>
+            <div><%= good_product.company %></div>
+          </div>
+          <div style="padding: 0 5px;" class="product-score">
+            <%= score_on_star(good_product.recommend) %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <br>
+  <h1 style="font-weight: bold;">新着商品</h1>
+  <div class="index-display">
+    <% @recently_products.each do |recently_product| %>
+      <div class="product" id="product_<%= recently_product.id %>">
+        <%= link_to product_path(recently_product) do %>
+          <% if recently_product.images.attached? %>
+            <% recently_product.images.each do |image| %>
+              <%= image_tag image, class: "image" %>
+            <% end %>
+          <% else %>
+            <%= image_tag "/images/dummy.png", class: "image" %>
+          <% end %>
+          <div style="padding: 0 5px;">
+            <%= recently_product.name %>
+          </div>
+          <div class="product-display">
+            <div><%= recently_product.genre.name %>/</div>
+            <div><%= recently_product.company %></div>
+          </div>
+          <div style="padding: 0 5px;" class="product-score">
+            <%= score_on_star(recently_product.recommend) %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <br>
+  <h1 style="font-weight: bold;">レビューから探す</h1>
+  <div class="index-display">
+    <% @good_reviews.each do |good_review| %>
+      <div class="product" id="product_<%= good_review.id %>">
+        <%= link_to product_path(good_review) do %>
+          <% if good_review.images.attached? %>
+            <% good_review.images.each do |image| %>
+              <%= image_tag image, class: "image" %>
+            <% end %>
+          <% else %>
+            <%= image_tag "/images/dummy.png", class: "image" %>
+          <% end %>
+          <div style="padding: 0 5px;">
+            <%= good_review.name %>
+          </div>
+          <div class="product-display">
+            <div><%= good_review.genre.name %>/</div>
+            <div><%= good_review.company %></div>
+          </div>
+          <div style="padding: 0 5px;" class="product-score">
+            <%= score_on_star(good_review.recommend) %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>    
+  </div>
+  <br>
+  <h1 style="font-weight: bold;">いいねランキング</h1>
+  <div class="index-display">
+    <% @likes.each do |like| %>
+      <div class="product" id="product_<%= like.id %>">
+        <%= link_to product_path(like) do %>
+          <% if like.images.attached? %>
+            <% like.images.each do |image| %>
+              <%= image_tag image, class: "image" %>
+            <% end %>
+          <% else %>
+            <%= image_tag "/images/dummy.png", class: "image" %>
+          <% end %>
+          <div style="padding: 0 5px;">
+            <%= like.name %>
+          </div>
+          <div class="product-display">
+            <div><%= like.genre.name %>/</div>
+            <div><%= like.company %></div>
+          </div>
+          <div style="padding: 0 5px;" class="product-score">
+            <%= score_on_star(like.recommend) %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <br>
 </div>
 <%= render "layouts/footer" %>

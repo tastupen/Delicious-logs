@@ -1,0 +1,15 @@
+<div class="full-page">
+  <h1 style="max-width: 1100px;margin: 0 auto;padding: 20px;">ジャンル検索</h1>
+  <div style="max-width: 1100px;margin: 0 auto;padding: 20px;">
+    <% @major_category_names.each do |major_category_name| %>
+      <h2 style="font-weight: bold;"><%= major_category_name %></h2>
+      <% @genres.each do |category| %>
+        <% if category.major_category_name == major_category_name %>
+          <label class="side-label">
+            <%= link_to category.name, products_path(genre: category.id) %>
+          </label>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

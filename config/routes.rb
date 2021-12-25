@@ -32,6 +32,9 @@ Rails.application.routes.draw do
   #search
   get 'search' => "searchs#search"
   
+  #genre
+  get 'genres' => "genres#index"
+  
   resources :products do
     resources :reviews, only: [:create]
   end

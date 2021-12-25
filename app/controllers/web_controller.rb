@@ -14,7 +14,7 @@ class WebController < ApplicationController
     end
     
     @major_category_names = Genre.major_categories
-    @genres = Genre.all
+    @genres = Genre.all.limit(20)
     @user = current_user
     @sort_list = Product.sort_list
     @recently_products = Product.recently_products(PRODUCTS_PER_PAGE)
