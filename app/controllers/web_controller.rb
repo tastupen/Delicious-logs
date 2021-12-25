@@ -20,6 +20,8 @@ class WebController < ApplicationController
     @recently_products = Product.recently_products(PRODUCTS_PER_PAGE)
     @good_products = Product.order("RANDOM()").limit(6)
     @instagrams = Product.instagram_products(PRODUCTS_PER_PAGE)
+    @good_reviews = Product.find(Review.group(:product_id).order("RANDOM()").pluck(:product_id))
+    @likes = Product.find(Like.group(:product_id).order('count(product_id) desc').pluck(:product_id))
   end
   
   private

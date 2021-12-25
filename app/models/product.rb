@@ -28,7 +28,7 @@ class Product < ApplicationRecord
     }
   }
   
-  PER = 12
+  PER = 16
   scope :display_list, -> (page) { page(page).per(PER) }
   scope :on_genre, -> (genre) { where(genre_id: genre) }
   scope :sort_order, -> (order) { order(order) }

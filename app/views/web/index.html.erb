@@ -92,51 +92,61 @@
           <% end %>
         </div>
         <br>
-        <h1 style="font-weight: bold;">商品一覧</h1>
+        <h1 style="font-weight: bold;">レビューから探す</h1>
         <div class="index-display">
-          <% @products.each do |product| %>
-            <div class="product" id="product_<%= product.id %>">
-              <%= link_to product_path(product) do %>
-                <% if product.images.attached? %>
-                  <% product.images.each do |image| %>
+          <% @good_reviews.each do |good_review| %>
+            <div class="product" id="product_<%= good_review.id %>">
+              <%= link_to product_path(good_review) do %>
+                <% if good_review.images.attached? %>
+                  <% good_review.images.each do |image| %>
                     <%= image_tag image, class: "image" %>
                   <% end %>
                 <% else %>
                   <%= image_tag "/images/dummy.png", class: "image" %>
                 <% end %>
                 <div style="padding: 0 5px;">
-                  <%= product.name %>
+                  <%= good_review.name %>
                 </div>
                 <div class="product-display">
-                  <div><%= product.genre.name %>/</div>
-                  <div><%= product.company %></div>
+                  <div><%= good_review.genre.name %>/</div>
+                  <div><%= good_review.company %></div>
                 </div>
                 <div style="padding: 0 5px;" class="product-score">
-                  <%= score_on_star(product.recommend) %>
-                </div>
-                <div id="product_likes_<%= product.id %>" style="padding: 0 5px;">
-                  <% if @user.present? %>  
-                    <% if @user.liked_by?(product.id) %>
-                      <%= link_to destroy_like_path(product), method: :DELETE, remote: true do %>
-                        <i class="fa fa-heart unlike-btn"></i>
-                      <% end %>
-                      <%= product.likes.count %>
-                    <% else %>
-                      <%= link_to create_like_path(product), method: :POST, remote: true do %>
-                        <i class="fa fa-heart like-btn"></i>
-                      <% end %>
-                      <%= product.likes.count %>
-                    <% end %>
-                  <% else %>
-                    <%= link_to "サインイン", new_user_registration_path %>
-                  <% end %>
+                  <%= score_on_star(good_review.recommend) %>
                 </div>
               <% end %>
             </div>
           <% end %>
         </div>
+        <br>
+        <h1 style="font-weight: bold;">いいねランキング</h1>
+        <div class="index-display">
+          <% @likes.each do |like| %>
+            <div class="product" id="product_<%= like.id %>">
+              <%= link_to product_path(like) do %>
+                <% if like.images.attached? %>
+                  <% like.images.each do |image| %>
+                    <%= image_tag image, class: "image" %>
+                  <% end %>
+                <% else %>
+                  <%= image_tag "/images/dummy.png", class: "image" %>
+                <% end %>
+                <div style="padding: 0 5px;">
+                  <%= like.name %>
+                </div>
+                <div class="product-display">
+                  <div><%= like.genre.name %>/</div>
+                  <div><%= like.company %></div>
+                </div>
+                <div style="padding: 0 5px;" class="product-score">
+                  <%= score_on_star(like.recommend) %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        <br>
       </div>
-      <%= paginate @products %>
     </div>
   </article>
   <aside>
