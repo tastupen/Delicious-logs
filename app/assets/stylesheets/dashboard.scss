@@ -1,0 +1,56 @@
+// Place all the styles related to the dashboard controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* メイン
+-------------------*/
+
+.dashboard-full-page {
+  min-height: calc(100vh - 300px);
+}
+
+.dashboard-main-contents {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dashboard-aside {
+  width: 15%;
+  border-right: solid 1px #ced4da;
+}
+
+.dashboard-article {
+  width: 90%;
+  padding: 10px 0 0 10px;
+}
+
+.dashboard-title {
+  text-align: center;
+  
+  p {
+    margin-right: 20%;
+  }
+}
+
+
+/* サイドバー
+-------------------*/
+
+.dashboard-sidebar {
+  width: 200px;
+  margin: 10px;
+  padding: 5px;
+  
+  h2 {
+    font-weight: bold;
+  }
+  
+  label {
+    margin-left: 10px;
+  }
+}
+
+.dashboard-label {
+  display:flex;
+  flex-flow: column;
+}
