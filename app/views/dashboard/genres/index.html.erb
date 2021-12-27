@@ -1,0 +1,52 @@
+<div class="dashboard-full-page">
+  <div class="dashboard-main-contents">
+    <aside class="dashboard-aside">
+      <%= render partial: 'layouts/dashboard/sidebar' %>
+    </aside>
+    <article class="dashboard-article">
+      <%= form_with(model: @genre, url: dashboard_genres_path, local: true) do |f| %>
+        <div>
+          <%= f.label :name, "カテゴリ名" %>: <%= f.text_field :name, class: "form-control", style: "margin-left: 32px;" %>
+        </div>
+        <br>
+        <div>
+          <%= f.label :description, "カテゴリの説明" %>: <%= f.text_field :description, class: "form-control" %>
+        </div>
+        <br>
+        <div>
+          <%= f.label :major_category_name, "カテゴリ" %>: <%= f.text_field :major_category_name, class: "form-control", style: "margin-left: 47px;" %>
+        </div>
+        <br>
+        <div>
+          <button type='submit' class="dashboard-form-btn">新規作成する</button>
+        </div>
+      <% end %>
+      <br>
+      <table class="dashboard-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>ジャンル</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @genres.each do |genre| %>
+            <tr>
+              <th><%= genre.id %></th>
+              <td><%= genre.name %></td>
+              <td>
+                <%= link_to "編集", edit_dashboard_genre_path(genre), class: "dashboard-edit-link" %>
+              </td>
+              <td>
+                <%= link_to "削除", dashboard_genre_path(genre), method: :delete, class: "dashboard-delete-link" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @genres %>
+    </article>
+  </div>
+</div>
