@@ -1,4 +1,4 @@
-<div class="full-page">
+<div class="full-page" style="min-height: calc(100vh - 150px);">
   <h2 style="max-width: 1100px;margin: 0 auto;padding: 20px;text-align: center;font-weight: bold;">ログイン</h2>
   <div class="user-login">
     <div class="form-all">
@@ -12,7 +12,7 @@
         <div class="field">
           <%= f.label :password, "パスワード" %>: <%= f.password_field :password, autocomplete: "current-password", style: "border: solid 1px;" %>
         </div>
-        
+        <br>
         <% if devise_mapping.rememberable? %>
           <div class="field">
             <%= f.check_box :remember_me %>
@@ -24,7 +24,8 @@
           <button type='submit' class="form-btn">ログインする</button>
         </div>
       <% end %>
-      <%= render "users/shared/links" %>
     </div>
   </div>
+  <%= render "admins/shared/links" %>
 </div>
+<%= render "layouts/footer" %>
