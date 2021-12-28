@@ -57,4 +57,9 @@ class Product < ApplicationRecord
   def self.search(keyword)
     where(["name like? OR price like? OR company like?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
   end
+  
+  scope :search_for_id_and_name, -> (keyword) {
+    where("name LIKE ?", "%#{keyword}%").or(where("id LIKE ?", "%#{keyword}%"))
+  }
+  
 end

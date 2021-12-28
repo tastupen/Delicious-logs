@@ -91,3 +91,27 @@
   letter-spacing: normal;
   color: #666666;
 }
+
+/* 商品名
+--------------------*/
+
+.dashboard-product-form-display {
+  display: flex;
+  
+  textarea {
+    margin: 0px;
+    width: 397px;
+    height: 52px;
+    resize: none;
+    border-radius: 0.3rem;
+    padding: 10px;
+  }
+}
+
+.dashboard-index-table {
+  width: 1000px;
+}
+
+.dashboard-image {
+  width: 150px;
+}

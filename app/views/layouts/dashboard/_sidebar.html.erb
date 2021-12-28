@@ -1,7 +1,9 @@
 <div class="dashboard-sidebar">
   <h2>商品管理</h2>
   <div class="dashboard-label">
-    <label>商品一覧</label>
+    <label>
+      <%= link_to "商品一覧", dashboard_products_path %>
+    </label>
     <label>
       <%= link_to "ジャンル管理", dashboard_genres_path %>
     </label>
@@ -9,5 +11,11 @@
   <h2>ユーザー管理</h2>
   <div>
     <label>ユーザー一覧</label>
+  </div>
+  <h2>その他</h2>
+  <div>
+    <label>
+      <%= link_to "管理画面ログアウト", dashboard_logout_path, method: :delete %>
+    </label>
   </div>
 </div>

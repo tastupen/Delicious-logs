@@ -1,0 +1,74 @@
+<div  class="dashboard-full-page">
+  <div class="dashboard-main-contents">
+    <aside class="dashboard-aside">
+      <%= render partial: 'layouts/dashboard/sidebar' %>
+    </aside>
+    <article class="dashboard-article">
+      <h1>商品管理</h1>
+      <%= form_with url: dashboard_products_path, method: :get, local: true do |f| %>
+        並べ方
+        <% if @sorted.present? %>
+          <%= f.select :sort, @sort_list, { selected: @sorted }, { onChange: "javascript: this.form.submit();" } %>
+        <% else %>
+          <%= f.select :sort, @sort_list, {}, { onChange: "javascript: this.form.submit();" } %>
+        <% end %>
+      <% end %>
+      <br>
+      <div>
+        <%= form_with url: dashboard_products_path, method: :get, local: true do |f| %>
+          <div>商品ID・商品名</div>
+          <div class="dashboard-product-form-display">
+            <div>
+              <%= f.text_area :keyword %>
+            </div>
+            <div>
+              <%= f.submit "検索", class: "dashboard-form-btn" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <br>
+      <div>
+        <h3>合計<%= @total_count %>件</h3>
+      </div>
+      <br>
+      <table class="dashboard-index-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>画像</th>
+            <th>商品名</th>
+            <th>価格</th>
+            <th>ジャンル名</th>
+            <th>親ジャンル</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @products.each do |product| %>
+          <tr>
+            <th><%= product.id %></th>
+            <td>
+              <% if product.images.attached? %>
+                <% product.images.each do |image| %>
+                  <%= image_tag image, class: "dashboard-image" %>
+                <% end %>
+              <% else %>
+                <%= image_tag "/images/dummy.png", class: "dashboard-image" %>
+              <% end %>
+            </td>
+            <td><%= product.name %></td>
+            <td><%= product.price %></td>
+            <td><%= product.genre.name %></td>
+            <td><%= product.genre.major_category_name %></td>
+            <td>
+              <%= link_to "削除", dashboard_product_path(product), method: :delete, class: "dashboard-delete-link" %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @products %>
+    </article>
+  </div>
+</div>
