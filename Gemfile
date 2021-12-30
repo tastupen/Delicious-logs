@@ -46,6 +46,9 @@ gem 'jquery-rails'
 #bootstrap
 gem 'bootstrap'
 
+# Amazon S3にファイルを保存できる
+gem 'aws-sdk-s3'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
