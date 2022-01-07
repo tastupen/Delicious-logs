@@ -21,10 +21,10 @@ class Product < ApplicationRecord
   scope :star_repeat_select, -> { 
     {
       "★★★★★" => 5, 
-      "★★★★" => 4,
-      "★★★" => 3, 
-      "★★" => 2, 
-      "★" => 1
+      "★★★★☆" => 4,
+      "★★★☆☆" => 3, 
+      "★★☆☆☆" => 2, 
+      "★☆☆☆☆" => 1
     }
   }
   
@@ -53,10 +53,6 @@ class Product < ApplicationRecord
   scope :recently_products, -> (number) { order(created_at: "desc").take(number) }
   scope :instagram_products, -> (number) { where(instagram: true).take(number) }
   
-  #search
-  def self.search(keyword)
-    where(["name like? OR price like? OR company like?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
-  end
   
   scope :search_for_id_and_name, -> (keyword) {
     where("name LIKE ?", "%#{keyword}%").or(where("id LIKE ?", "%#{keyword}%"))
