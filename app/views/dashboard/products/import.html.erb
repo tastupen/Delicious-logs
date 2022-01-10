@@ -1,0 +1,71 @@
+<div class="dashboard-full-page">
+  <div class="dashboard-main-contents">
+    <aside class="dashboard-aside">
+      <%= render partial: 'layouts/dashboard/sidebar' %>
+    </aside>
+    <article class="dashboard-article">
+      <h1>商品csv登録</h1>
+      <%= form_with model: @product, url: import_csv_dashboard_products_path, local: true do |f| %>
+        <div class="dashboard-product-form-display">
+          <div>
+            <%= f.label "CSVファイルを選択", for: "file"  %>
+          </div>
+          <div>
+            <%= f.file_field :file, onChange: "handleCSV(this.files)",style: "display: none;" %>
+          </div>
+          <div>
+            <%= f.submit "一括登録", class: "dashboard-form-btn" %>
+          </div>
+        </div>
+        <small id="product-import-csv-filename"></small>
+    　<% end %>
+    　<div>
+    　  <h4>CSVファイルフォーマット</h4>
+    　  <%= link_to "雛形ファイルダウンロード", import_csv_download_dashboard_products_path %>
+    　</div>
+    　<hr>
+    　<div>
+    　  <div>
+    　     <label>商品ID</label>
+          <span>新規登録の場合は空にしてください。既存の商品を更新する場合は、商品IDを指定してください。</span>
+    　  </div>
+        <div style="margin-left: 20px;"> 
+          <label>商品名</label>
+          <span></span>
+        </div>
+        <div style="margin-left: 20px;">
+          <label>商品説明</label>
+          <span></span>
+        </div>
+        <div style="margin-left: 20px;">
+          <label>価格</label>
+          <span></span>
+        </div>
+        <div style="margin-left: 20px;">
+          <label>味の種類</label>
+          <span></span>
+        </div>
+        <div style="margin-left: 20px;">
+          <label>味の濃さ</label>
+          <span></span>
+        </div>
+        <div style="margin-left: 20px;">
+          <label>オススメ商品フラグ</label>
+          <span></span>
+        </div>
+        <div style="margin-left: 20px;">
+          <label>インスタ映えフラグ</label>
+          <span></span>
+        </div>
+        <div style="margin-left: 20px;">
+          <label>会社名</label>
+          <span></span>
+        </div>
+        <div style="margin-left: 20px;">
+          <label>ジャンルID</label>
+          <span></span>
+        </div>
+    　</div>
+    </article>
+  </div>
+</div>

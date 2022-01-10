@@ -49,6 +49,9 @@ gem 'bootstrap'
 # Amazon S3にファイルを保存できる
 gem 'aws-sdk-s3'
 
+# 複数のレコードを一括で登録、更新できる
+gem 'activerecord-import'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 

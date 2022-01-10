@@ -58,4 +58,34 @@ class Product < ApplicationRecord
     where("name LIKE ?", "%#{keyword}%").or(where("id LIKE ?", "%#{keyword}%"))
   }
   
+  #csv
+  def self.import_csv(file)
+    new_products = []
+    update_products = []
+    
+    CSV.foreach(file.path, headers: true, encoding: "Shift_JIS:UTF-8") do |row|
+      row_to_hash = row.to_hash
+      byebug
+      if row_to_hash[:id].present?
+        update_product = find(id: row_to_hash[:id])
+        update_product.attributes = row.to_hash.slice!(csv_attributes)
+        update_products << update_product
+      else
+        new_product = new
+        new_product.attributes = row.to_hash.slice!(csv_attributes)
+        new_products << new_product
+      end
+    end
+    if update_products.present?
+      import update_products, on_duplicate_key_update: csv_attributes
+    elsif new_products.present?
+      import new_products
+    end
+  end
+  
+  private
+    def self.csv_attributes
+      [:name, :description, :price, :category_id, :taste_id, :recommend, :instagram, :user_id, :company, :genre_id]
+    end
+  
 end
