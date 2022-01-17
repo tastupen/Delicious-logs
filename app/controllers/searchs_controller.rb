@@ -6,15 +6,13 @@ class SearchsController < ApplicationController
     @keywords = @keyword.split(/[[:blank:]]+/)
     if @keyword and @price.present?
       @keywords.each do |keyword|
-        @products += Product.where(["name like ? OR company like ?", "#{keyword}%", "#{keyword}%"]).where(price: @price)
-        @genres = Product.joins(:genre).where(["genres.name like ? OR genres.major_category_name like ?", "#{keyword}%", "#{keyword}%"]).where(price: @price)
+        @products += Product.joins(:genre).where(["products.name like ? OR genres.name like ? OR company like ? OR major_category_name like ?", "#{keyword}%", "#{keyword}%", "#{keyword}%", "#{keyword}%" ]).where("price <= ?", @price)
+        @pages = Kaminari.paginate_array(@products).page(params[:page]).per(5)
       end
-    elsif params[:price].present?
-      @products += Product.where(price: Float::MIN..params[:price])
     else
       @keywords.each do |keyword|
-        @products += Product.where(["name like ? OR company like ?", "#{keyword}%", "#{keyword}%"])
-        @genres = Product.joins(:genre).where(["genres.name like ? OR genres.major_category_name like ?", "#{keyword}%", "#{keyword}%"])
+        @products += Product.joins(:genre).where(["products.name like ? OR genres.name like ? OR company like ? OR major_category_name like ?", "#{keyword}%", "#{keyword}%", "#{keyword}%", "#{keyword}%" ])
+        @pages = Kaminari.paginate_array(@products).page(params[:page]).per(5)
       end
     end
     render "search"
