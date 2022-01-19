@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def update
     @user.update_without_password(user_params)#deviseで使えるメソッド！
-    redirect_to mypage_users_url
+    redirect_to mypage_users_url, notice: 'アカウント更新に成功しました'
   end
 
   def mypage
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   
   def update_password
     if password_set?
-      @user.update_password(user_params) 
+      @user.update_password(password_params) 
       flash[:notice] = "パスワードは正しく更新されました。"
       redirect_to root_url
     else
@@ -33,7 +33,8 @@ class UsersController < ApplicationController
     @genres = Genre.all
     @product_star_repeat_select = Product.star_repeat_select
     @likes = Like.where(user_id: current_user.id).order(created_at: :desc)
-    @reviews = Review.select(:user_id, :product_id).distinct
+    review = Review.where(user_id: current_user.id)
+    @reviews = review.select(:product_id).distinct
   end
   
   def destroy
@@ -53,8 +54,12 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :email, :password, :password_confirmation, :image)
     end
     
+    def password_params
+      params.permit(:name, :email, :password, :password_confirmation, :image)
+    end
+    
     def password_set?
-      user_params[:password].present? && user_params[:password_confirmation].present? ?
+      password_params[:password].present? && password_params[:password_confirmation].present? ?
       true : false
     end
 end
