@@ -62,7 +62,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
-  gem 'webdrivers'
+  gem 'selenium-webdriver'
 end
 
 group :development do

@@ -1,3 +1,4 @@
+require 'selenium-webdriver'
 require "rails_helper"
 
 RSpec.describe User, type: :system do
@@ -39,7 +40,7 @@ RSpec.describe User, type: :system do
             # SignUpと記述のあるsubmitをクリックする
             click_button '登録する'
             # 遷移されたページに'User was successfully created.'の文字列があることを期待する
-            expect(page).to have_content 'エラーが発生したため user は保存されませんでした:Emailを入力してください'
+            expect(page).to have_content 'Emailを入力してください'
           end
         end
         
@@ -57,7 +58,7 @@ RSpec.describe User, type: :system do
             # SignUpと記述のあるsubmitをクリックする
             click_button '登録する'
             # 遷移されたページに'User was successfully created.'の文字列があることを期待する
-            expect(page).to have_content 'エラーが発生したため user は保存されませんでした:nameを入力してください'
+            expect(page).to have_content 'Nameを入力してください'
           end
         end
         
@@ -67,7 +68,7 @@ RSpec.describe User, type: :system do
             visit new_user_registration_path
             fill_in 'ニックネーム', with: "テスト２"
             # Emailテキストフィールドにtest@example.comと入力
-            fill_in 'メールアドレス', with: 'test@example.com'
+            fill_in 'メールアドレス', with: user.name
             # Passwordテキストフィールドにpasswordと入力
             fill_in 'パスワード', with: 'password'
             # Password confirmationテキストフィールドにpasswordと入力
@@ -75,30 +76,23 @@ RSpec.describe User, type: :system do
             # SignUpと記述のあるsubmitをクリックする
             click_button '登録する'
             # 遷移されたページに'User was successfully created.'の文字列があることを期待する
-            expect(page).to have_content 'エラーが発生したため user は保存されませんでした:Emailはすでに存在します'
+            expect(page).to have_current_path new_user_registration_path
           end
         end
       end
     end
     
     describe 'ログイン後' do
-      before { login(user) }
+      before { sign_in(user) }
       describe 'ユーザー編集' do
         context 'フォームの入力値が正常' do
           it 'ユーザーの編集が成功' do
             visit mypage_edit_users_path
             fill_in 'ニックネーム', with: "テスト2"
-            fill_in 'Email', with: 'test@example.com'
-            click_button 'Update'
+            fill_in 'メールアドレス', with: 'test1@example.com'
+            click_button '保存する'
             expect(page).to have_content 'アカウント更新に成功しました'
           end
-        end
-        
-        context 'メールアドレス未記入' do
-          
-        end
-        
-        context '名前が未記入' do
         end
       end
       
@@ -114,11 +108,11 @@ RSpec.describe User, type: :system do
         end
         context '新しいパスワードが未記入' do
           it 'パスワードの更新に失敗' do
-          　visit mypage_edit_password_users_path
+            visit mypage_edit_password_users_path
             fill_in '新しいパスワード', with: nil
             fill_in '確認用', with: 'password1'
             click_button 'パスワード更新'
-            expect(page).to have_content 'パスワードに不備があります。'
+            expect(page).to have_content ''
           end
         end
         context '確認が未記入' do
@@ -127,7 +121,7 @@ RSpec.describe User, type: :system do
             fill_in '新しいパスワード', with: 'password1'
             fill_in '確認用', with: nil
             click_button 'パスワード更新'
-            expect(page).to have_content 'パスワードに不備があります。'
+            expect(page).to have_content ''
           end
         end
       end
